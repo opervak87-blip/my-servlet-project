@@ -1,0 +1,142 @@
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	color: #333;
+}
+
+/* Header */
+header {
+	background-color: #e31837;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 40px;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+nav {
+	display: flex;
+	gap: 35px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+nav a:hover {
+	border-bottom: 2px solid #fff;
+	padding-bottom: 2px;
+}
+
+/* Header right: icons + login */
+.header-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 18px;
+	color: #fff;
+}
+
+.header-right span {
+	cursor: pointer;
+}
+
+.login-btn {
+	background-color: #fff;
+	color: #d60000;
+	border: none;
+	padding: 8px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.login-btn:hover {
+	background: #f7f7f7;
+}
+
+/* Navigation bar */
+.nav-bar {
+	display: flex;
+	background-color: #f7f7f7;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+
+/* Dropdown wrapper */
+.dropdown-wrapper {
+	flex: 1;
+	text-align: center;
+	position: static;
+	/* static here; content is absolute relative to body */
+	display: inline-block;
+}
+
+/* Dropdown title */
+.dropdown-title {
+	padding: 12px 0;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.dropdown-title:hover {
+	color: #e31837;
+}
+
+/* Dropdown content - full width */
+.dropdown-content {
+	display: none;
+	cursor: pointer;
+	position: fixed; /* fixed allows full width from left */
+	top: 92px; /* height of nav bar + header */
+	left: 0;
+	width: 100vw;
+	background-color: #fff;
+	padding: 20px 40px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	z-index: 1000;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 20px;
+}
+
+/* Show dropdown on hover */
+.dropdown-wrapper:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content div {
+	padding: 8px 0;
+	font-size: 14px;
+	color: #333;
+	text-align: left;
+	display: block;
+}
+
+.dropdown-content div:hover {
+	background-color: #f0f0f0;
+}
+
+/* Welcome section */
+.welcome {
+	text-align: center;
+	padding: 50px 20px;
+}
+
+.welcome h2 {
+	font-size: 28px;
+	margin-bottom: 15px;
+}
+
+.welcome p {
+	font-size: 16px;
+	color: #666;
+}
