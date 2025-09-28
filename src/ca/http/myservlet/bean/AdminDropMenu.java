@@ -22,7 +22,7 @@ public class AdminDropMenu {
 		return adminNavBar;
 	}
 
-	public String getatitle() {
+	public String getTitle() {
 		return title;
 	}
 

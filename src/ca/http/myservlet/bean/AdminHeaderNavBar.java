@@ -1,15 +1,19 @@
 package ca.http.myservlet.bean;
 
+import java.util.List;
+
 public class AdminHeaderNavBar {
 
 	private int id;
 	private String title;
 	private boolean inUse;
+	private List<AdminDropMenu> listAdminDropMenu; 
 
 	AdminHeaderNavBar(Builder builder) {
 		this.id = builder.id;
 		this.title = builder.title;
 		this.inUse = builder.inUse;
+		this.listAdminDropMenu = builder.listAdminDropMenu;
 	}
 
 	public int getId() {
@@ -23,6 +27,10 @@ public class AdminHeaderNavBar {
 	public boolean getInUse() {
 		return inUse;
 	}
+	
+	public List<AdminDropMenu> getListAdminDropMenu(){
+		return listAdminDropMenu;
+	}
 
 	@Override
 	public String toString() {
@@ -33,6 +41,7 @@ public class AdminHeaderNavBar {
 		private int id;
 		private String title;
 		private boolean inUse;
+		private List<AdminDropMenu> listAdminDropMenu; 
 
 		public Builder id(int id) {
 			this.id = id;
@@ -48,10 +57,16 @@ public class AdminHeaderNavBar {
 			this.inUse = inUse;
 			return this;
 		}
+		
+		public Builder listAdminDropMenu(List<AdminDropMenu> listAdminDropMenu) {
+			this.listAdminDropMenu = listAdminDropMenu;
+			return this;
+		}
 
 		public AdminHeaderNavBar build() {
 			return new AdminHeaderNavBar(this);
 		}
+
 	}
 
 }

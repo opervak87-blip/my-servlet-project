@@ -9,5 +9,7 @@ public interface AdminHeaderNavBarDAO {
 	List<AdminHeaderNavBar> getAll();
 	
 	List<AdminHeaderNavBar> getAllInUseTrue();
+	
+	List<AdminHeaderNavBar> getAllInUseTrueWithDropMenu();
 
 }

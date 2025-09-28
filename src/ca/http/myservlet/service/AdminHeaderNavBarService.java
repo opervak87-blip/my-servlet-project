@@ -9,5 +9,7 @@ public interface AdminHeaderNavBarService {
 	List<AdminHeaderNavBar> getAll();
 
 	List<AdminHeaderNavBar> getAllInUseTrue();
+	
+	List<AdminHeaderNavBar> getAllInUseTrueWithDropMenu();
 
 }

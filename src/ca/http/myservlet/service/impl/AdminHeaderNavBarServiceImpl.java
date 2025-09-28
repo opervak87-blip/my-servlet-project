@@ -24,4 +24,9 @@ public class AdminHeaderNavBarServiceImpl implements AdminHeaderNavBarService{
 		return adminHeaderNavBarDAO.getAllInUseTrue();
 	}
 
+	@Override
+	public List<AdminHeaderNavBar> getAllInUseTrueWithDropMenu() {
+		return adminHeaderNavBarDAO.getAllInUseTrueWithDropMenu();
+	}
+
 }

@@ -12,6 +12,8 @@
 
 	<!-- Header -->
 	<%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
+	
+	
 
 	<!-- Navigation bar with dropdowns -->
 	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp" %>

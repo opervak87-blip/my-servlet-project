@@ -21,13 +21,12 @@ public class GoToIndexPage implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Object context)
 			throws ServletException, IOException {
-		
+
 		ServiceProvider provider = (ServiceProvider) context;
 
-		List<News> newsList = provider.getNewsService().getAll();
-		List<AdminHeaderNavBar> adminHeaderNavBarServiceList = provider.getAdminHeaderNavBarService().getAllInUseTrue();
-	
-		request.setAttribute(AppConstants.NEWS.get(), newsList);
+		List<AdminHeaderNavBar> adminHeaderNavBarServiceList = provider.getAdminHeaderNavBarService().getAllInUseTrueWithDropMenu();
+
+		request.setAttribute(AppConstants.ADMIN_HEADER_NAV_BAR.get(), adminHeaderNavBarServiceList);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 		requestDispatcher.forward(request, response);
