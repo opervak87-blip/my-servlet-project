@@ -11,14 +11,14 @@
 <body>
 
 	<!-- Header -->
-	<%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
-	
-	
+	<%@ include file="/WEB-INF/jsp/includes/header.jsp"%>
+
+
 
 	<!-- Navigation bar with dropdowns -->
-	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp" %>
-	
-	
+	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp"%>
+
+
 	<!-- Welcome Section -->
 	<div class="welcome">
 		<h2>Welcome to Riverstone Bank</h2>
@@ -26,6 +26,6 @@
 			banking.</p>
 	</div>
 
-	
+
 </body>
 </html>

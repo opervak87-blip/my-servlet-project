@@ -9,7 +9,7 @@ public class AdminHeaderNavBar {
 	private boolean inUse;
 	private List<AdminDropMenu> listAdminDropMenu; 
 
-	AdminHeaderNavBar(Builder builder) {
+	public AdminHeaderNavBar(Builder builder) {
 		this.id = builder.id;
 		this.title = builder.title;
 		this.inUse = builder.inUse;

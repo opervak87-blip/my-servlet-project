@@ -47,6 +47,7 @@ public class Controller extends HttpServlet {
 		
 		String name;
 		name = request.getParameter("command");
+		System.out.println("Controller : command name : " + name);
 		if (name == null) {
 			name = CommandName.GOTOINDEXPAGE.toString();
 		}

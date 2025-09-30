@@ -49,7 +49,7 @@ public class AdminDropMenu {
 			return this;
 		}
 
-		public Builder AdminHeaderNavBar(AdminHeaderNavBar adminNavBar) {
+		public Builder adminHeaderNavBar(AdminHeaderNavBar adminNavBar) {
 			this.adminNavBar = adminNavBar;
 			return this;
 		}

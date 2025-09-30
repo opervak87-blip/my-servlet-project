@@ -2,6 +2,7 @@ package ca.http.myservlet.service;
 
 import ca.http.myservlet.dao.DAOProvider;
 import ca.http.myservlet.dao.connectionpool.ConnectionPool;
+import ca.http.myservlet.service.impl.AdminDropmenuDetailsServiceImpl;
 import ca.http.myservlet.service.impl.AdminHeaderNavBarServiceImpl;
 import ca.http.myservlet.service.impl.NewsServiceImpl;
 import ca.http.myservlet.service.impl.UserServiceImpl;
@@ -32,6 +33,10 @@ public final class ServiceProvider {
 	
 	public AdminHeaderNavBarService getAdminHeaderNavBarService() {
 		return new AdminHeaderNavBarServiceImpl(daoProvider.getAdminHeaderNavBarDAO());
+	}
+	
+	public AdminDropmenuDetailsService getAdminDropmenuDetailsService() {
+		return new AdminDropmenuDetailsServiceImpl(daoProvider.getAdminDropmenuDetailsDAO());
 	}
 
 }

@@ -11,7 +11,21 @@ public enum SQLQuery {
 			+ " FROM admin_header_nav_bar h "
 			+ " LEFT JOIN admin_dropmenu m "
 			+ " ON h.id = m.admin_header_nav_bar_id "
-			+ "WHERE h.is_use = true AND m.is_use = true ORDER BY h.id, m.id;");
+			+ "WHERE h.is_use = true AND m.is_use = true ORDER BY h.id, m.id;"),
+	ADMIN_DROP_MENU_DETAILS_ALL("SELECT  dmd.id as dmd_id, dmd.title as dmd_title, dmd.article as dmd_article, "
+			+ "dmd.is_use as dmd_is_use, dm.id as dm_id, dm.title as dm_title, dm.is_use as dm_is_use  "
+			+ "FROM admin_dropmenu_details dmd LEFT JOIN admin_dropmenu dm ON dmd.admin_dropmenu_id = dm.id ORDER BY dmd.id, dm.id;"),
+	ADMIN_DROP_MENU_DETAILS_ALL_INUSE_TRUE("SELECT  dmd.id as dmd_id, dmd.title as dmd_title, dmd.article as dmd_article, "
+			+ "dmd.is_use as dmd_is_use, dm.id as dm_id, dm.title as dm_title, dm.is_use as dm_is_use  "
+			+ "FROM admin_dropmenu_details dmd LEFT JOIN admin_dropmenu dm ON dmd.admin_dropmenu_id = dm.id  "
+			+ "WHERE dmd.is_use = true AND dm.is_use = true ORDER BY dmd.id, dm.id;"),
+	ADMIN_DROP_MENU_DETAILS_BY_ID("SELECT nb.title as nb_title, dmd.id as dmd_id, dmd.title as dmd_title, dmd.article as dmd_article, "
+			+ "dmd.is_use as dmd_is_use, dm.id as dm_id, dm.title as dm_title, dm.is_use as dm_is_use  "
+			+ "FROM admin_dropmenu_details dmd "
+			+ "LEFT JOIN admin_dropmenu dm ON dmd.admin_dropmenu_id = dm.id  "
+			+ "LEFT JOIN admin_header_nav_bar nb ON dm.admin_header_nav_bar_id = nb.id "
+			+ "WHERE dm.id = ? "
+			+ "ORDER BY dmd.id, dm.id;");
 
 	private final String value;
 

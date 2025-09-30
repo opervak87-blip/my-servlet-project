@@ -26,7 +26,7 @@ public class GoToIndexPage implements Command {
 
 		List<AdminHeaderNavBar> adminHeaderNavBarServiceList = provider.getAdminHeaderNavBarService().getAllInUseTrueWithDropMenu();
 
-		request.setAttribute(AppConstants.ADMIN_HEADER_NAV_BAR.get(), adminHeaderNavBarServiceList);
+		request.getSession().setAttribute(AppConstants.ADMIN_HEADER_NAV_BAR.get(), adminHeaderNavBarServiceList);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 		requestDispatcher.forward(request, response);

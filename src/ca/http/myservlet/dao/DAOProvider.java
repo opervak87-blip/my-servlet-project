@@ -1,6 +1,7 @@
 package ca.http.myservlet.dao;
 
 import ca.http.myservlet.dao.connectionpool.ConnectionPool;
+import ca.http.myservlet.dao.impl.AdminDropmenuDetailsDAOImpl;
 import ca.http.myservlet.dao.impl.AdminHeaderNavBarDAOImpl;
 import ca.http.myservlet.dao.impl.NewsDAOImpl;
 import ca.http.myservlet.dao.impl.UserDAOImpl;
@@ -31,6 +32,10 @@ public final class DAOProvider {
 	
 	public AdminHeaderNavBarDAO getAdminHeaderNavBarDAO() {
 		return new AdminHeaderNavBarDAOImpl(pool);
+	}
+	
+	public AdminDropmenuDetailsDAO getAdminDropmenuDetailsDAO() {
+		return new  AdminDropmenuDetailsDAOImpl(pool);
 	}
 
 }

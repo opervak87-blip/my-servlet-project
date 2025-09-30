@@ -3,6 +3,7 @@ package ca.http.myservlet.controller.command;
 import java.util.HashMap;
 import java.util.Map;
 
+import ca.http.myservlet.controller.command.impl.GoToDropMenuDetails;
 import ca.http.myservlet.controller.command.impl.GoToIndexPage;
 import ca.http.myservlet.controller.command.impl.GoToRegistrationPage;
 import ca.http.myservlet.controller.command.impl.Logination;
@@ -17,6 +18,7 @@ private Map<CommandName, Command> commands = new HashMap<>();
 		commands.put(CommandName.LOGINATION, new Logination());
 		commands.put(CommandName.REGISTRATION, new Registartion());
 		commands.put(CommandName.GOTOREGISTRATIONPAGE, new GoToRegistrationPage());
+		commands.put(CommandName.GOTODROPMENUDETAILS, new GoToDropMenuDetails());
 	}
 	
 	
