@@ -32,8 +32,6 @@ public class GoToDropMenuDetails implements Command {
 			
 			List<Breadcrumb> trail = BreadcrumbHelper.dropMenu(adminDropmenuDetailsList.get(0)).getCrumbs();
 			
-			
-			
 			request.setAttribute("breadcrumbs", trail);
 			request.setAttribute(AppConstants.ADMIN_DROP_MENU_DETAILS.get(), adminDropmenuDetailsList);
 

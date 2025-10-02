@@ -39,8 +39,7 @@ public class UserDAOImpl implements UserDAO {
 				userList.add(user);
 			}
 		} catch (InterruptedException | SQLException e) {
-			log.info("Error while fetching users : " );
-			e.printStackTrace();
+			log.info("Error while fetching users : " + e.getMessage());
 			 throw new DAOException("Unable to fetch users", e);
 		} 
 		return userList;

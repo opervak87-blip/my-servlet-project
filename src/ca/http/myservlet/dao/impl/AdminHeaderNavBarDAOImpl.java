@@ -21,7 +21,7 @@ import ca.http.myservlet.dao.exception.DAOException;
 
 public class AdminHeaderNavBarDAOImpl implements AdminHeaderNavBarDAO {
 
-	private static final Logger log = Logger.getLogger(NewsDAOImpl.class.getName());
+	private static final Logger log = Logger.getLogger(AdminHeaderNavBarDAOImpl.class.getName());
 	private final ConnectionPool pool;
 
 	public AdminHeaderNavBarDAOImpl(ConnectionPool pool) {
@@ -62,7 +62,7 @@ public class AdminHeaderNavBarDAOImpl implements AdminHeaderNavBarDAO {
 
 			}
 		} catch (InterruptedException | SQLException e) {
-			log.info("Error while fetching AdminHeaderNavBar : ");
+			log.info("Error while fetching AdminHeaderNavBar : "+ e.getMessage());
 			e.printStackTrace();
 			throw new DAOException("Unable to fetch AdminHeaderNavBar", e);
 		}
@@ -81,7 +81,7 @@ public class AdminHeaderNavBarDAOImpl implements AdminHeaderNavBarDAO {
 				navBarList.add(navBar);
 			}
 		} catch (InterruptedException | SQLException e) {
-			log.info("Error while fetching AdminHeaderNavBar : ");
+			log.info("Error while fetching AdminHeaderNavBar : "+ e.getMessage());
 			e.printStackTrace();
 			throw new DAOException("Unable to fetch AdminHeaderNavBar", e);
 		}

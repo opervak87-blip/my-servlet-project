@@ -41,8 +41,7 @@ public class NewsDAOImpl implements NewsDAO {
 				newsList.add(news);
 			}
 		} catch (InterruptedException | SQLException e) {
-			log.info("Error while fetching news : " );
-			e.printStackTrace();
+			log.info("Error while fetching news : " + e.getMessage());
 			 throw new DAOException("Unable to fetch news", e);
 		} 
 		return newsList;
