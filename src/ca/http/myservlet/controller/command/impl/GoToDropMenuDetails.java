@@ -32,7 +32,7 @@ public class GoToDropMenuDetails implements Command {
 			
 			List<Breadcrumb> trail = BreadcrumbHelper.dropMenu(adminDropmenuDetailsList.get(0)).getCrumbs();
 			
-			request.setAttribute("breadcrumbs", trail);
+			request.setAttribute(AppConstants.BREADCRUMBS.get(), trail);
 			request.setAttribute(AppConstants.ADMIN_DROP_MENU_DETAILS.get(), adminDropmenuDetailsList);
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index_details.jsp");

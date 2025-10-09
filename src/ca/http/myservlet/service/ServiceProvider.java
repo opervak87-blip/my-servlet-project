@@ -38,5 +38,7 @@ public final class ServiceProvider {
 	public AdminDropmenuDetailsService getAdminDropmenuDetailsService() {
 		return new AdminDropmenuDetailsServiceImpl(daoProvider.getAdminDropmenuDetailsDAO());
 	}
+	
+	
 
 }

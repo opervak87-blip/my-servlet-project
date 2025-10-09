@@ -13,18 +13,17 @@ import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.controller.command.Command;
 import ca.http.myservlet.util.BreadcrumbHelper;
 
-public class GoToRegistrationPage implements Command{
+public class GoToLoginPage implements Command{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, Object context) throws ServletException, IOException {
-
-
-		List<Breadcrumb> trail = BreadcrumbHelper.nextToHome(AppConstants.REGISTRATION.get()).getCrumbs();
+	public void execute(HttpServletRequest request, HttpServletResponse response, Object context)
+			throws ServletException, IOException {
+		
+		List<Breadcrumb> trail = BreadcrumbHelper.nextToHome(AppConstants.LOGIN.get()).getCrumbs();
 		request.setAttribute(AppConstants.BREADCRUMBS.get(), trail);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		requestDispatcher.forward(request, response);
-		
 	}
 
 }

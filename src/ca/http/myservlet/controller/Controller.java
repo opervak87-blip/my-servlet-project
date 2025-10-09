@@ -1,10 +1,6 @@
 package ca.http.myservlet.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.http.myservlet.config.AppConstants;
-import ca.http.myservlet.controller.command.Command;
 import ca.http.myservlet.controller.command.CommandName;
 import ca.http.myservlet.controller.command.CommandProvider;
 import ca.http.myservlet.dao.connectionpool.ConnectionPool;

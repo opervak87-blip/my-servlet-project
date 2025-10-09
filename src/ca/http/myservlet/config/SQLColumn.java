@@ -8,8 +8,11 @@ public enum SQLColumn {
 	NEWS_ARTICLE("article"),
 	NEWS_CREATED_AT("created_at"),
 	
-	USER_LOGIN("login"),
-	USER_PASSWORD("password"),
+	USER_ID("u_id"),
+	USER_LOGIN("u_login"),
+	USER_PASSWORD("u_password"),
+	USER_IS_ACTIVE("u_is_active"),
+	USER_ROLES("r_role_name"),
 	
 	ADMIN_HEADER_NAV_BAR_TITLE("title"),
 	ADMIN_HEADER_NAV_BAR_IS_USE("is_use"),

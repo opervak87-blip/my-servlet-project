@@ -7,5 +7,7 @@ import ca.http.myservlet.bean.User;
 public interface UserService {
 	
 	List<User> getAll();
+	
+	boolean saveUser(User user);
 
 }

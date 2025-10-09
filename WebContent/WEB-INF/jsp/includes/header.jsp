@@ -11,8 +11,7 @@
 			<span title="Call Us">&#9742;</span> <span title="Find Location">&#9679;</span>
 			<!-- ● placeholder for pin -->
 			<span title="Special Offers">&#9733;</span>
-			<form action="login.jsp" method="get" style="display: inline;">
-				<button type="submit" class="login-btn">Sign In</button>
-			</form>
+			
+			<a href="${pageContext.request.contextPath}/Controller?command=goToLoginPage" class="login-btn">Sign In</a>
 		</div>
 	</header>

@@ -16,5 +16,11 @@ public class BreadcrumbHelper {
 		trail.add(adminDropmenuDetails.getAdminDropMenu().getAdminHeaderNavBar().getTitle(), "/Controller?command=gotoIndexPage");
 		return trail;
 	}
+	
+	public static BreadcrumbTrail nextToHome(String namePage) {
+		BreadcrumbTrail trail = home();
+		trail.add(namePage, "/Controller?command=gotoIndexPage");
+		return trail;
+	}
 
 }

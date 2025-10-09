@@ -9,7 +9,7 @@
 <body>
 <h1> 
 <%  String contextPath = request.getContextPath();
-	//System.out.println("INDEX contextPath - " + contextPath);
+	System.out.println("INDEX contextPath - " + contextPath);
 	response.sendRedirect(contextPath + "/Controller?command=gotoindexpage"); %>
 </h1>
 </body>

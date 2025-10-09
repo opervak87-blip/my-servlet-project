@@ -1,8 +1,17 @@
 package ca.http.myservlet.config;
 
+
 public enum SQLQuery {
 
-	GET_ALL_USERS("SELECT id, login, password FROM users"), GET_ALL_NEWS("SELECT * FROM news"),
+	GET_ALL_USERS("SELECT u.id as u_id, u.login as u_login, u.password as u_password, u.is_active as u_is_active, "
+			+ "r.role_name as r_role_name " + 
+			"FROM users u " + 
+			"LEFT JOIN user_roles ur " + 
+			"ON ur.user_id = u.id  " + 
+			"LEFT JOIN roles r " + 
+			"ON ur.role_id = r.id " + 
+			"ORDER BY u.id;"), 
+	GET_ALL_NEWS("SELECT * FROM news"),
 	ADMIN_HEADER_NAV_BAR_GET_ALL("SELECT * FROM admin_header_nav_bar"),
 	ADMIN_HEADER_NAV_BAR_GET_ALL_INUSE_TRUE("SELECT * FROM admin_header_nav_bar WHERE is_use = true;"),
 	ADMIN_HEADER_NAV_BAR_CET_ALL_INUSE_TRUE_WITH_DROPMENU("SELECT"
@@ -25,7 +34,8 @@ public enum SQLQuery {
 			+ "LEFT JOIN admin_dropmenu dm ON dmd.admin_dropmenu_id = dm.id  "
 			+ "LEFT JOIN admin_header_nav_bar nb ON dm.admin_header_nav_bar_id = nb.id "
 			+ "WHERE dm.id = ? "
-			+ "ORDER BY dmd.id, dm.id;");
+			+ "ORDER BY dmd.id, dm.id;"),
+	SAVE_NEW_USER("INSERT INTO users (login, password, is_active, email, fullname) VALUES (?, ?, ?, ?, ?);");
 
 	private final String value;
 

@@ -26,8 +26,7 @@ public class AdminDropmenuDetailsServiceImpl implements AdminDropmenuDetailsServ
 
 	@Override
 	public List<AdminDropmenuDetails> getAllByAdminDropMenuID(int adminDropMenuId) {
-		//return adminDropmenuDetailsDAO.getAllByAdminDropMenuID(adminDropMenuId);
-		return null;
+		return adminDropmenuDetailsDAO.getAllByAdminDropMenuID(adminDropMenuId);
 	}
 
 }
