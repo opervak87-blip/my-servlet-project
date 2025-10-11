@@ -8,7 +8,12 @@ public enum AppConstants {
 	ADMIN_DROP_MENU_DETAILS("admin_drop_menu_details"),
 	BREADCRUMBS("breadcrumbs"),
 	REGISTRATION("Registration"),
-	LOGIN("Login");
+	FULL_NAME("fullname"),
+	EMAIL("email"),
+	PASSWORD("password"),
+	LOGIN("Login"),
+	LOGIN_SMALL_LETTER("login");
+	
 
 	private final String value;
 
