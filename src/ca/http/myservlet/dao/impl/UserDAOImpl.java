@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import ca.http.myservlet.bean.AdminDropMenu;
 import ca.http.myservlet.bean.AdminDropmenuDetails;
 import ca.http.myservlet.bean.AdminHeaderNavBar;
+import ca.http.myservlet.bean.RegistrationResult;
 import ca.http.myservlet.bean.User;
 import ca.http.myservlet.config.SQLColumn;
 import ca.http.myservlet.config.SQLQuery;
@@ -60,7 +61,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean saveUser(User user) {
+	public RegistrationResult saveUser(User user) {
 		try (Connection con = pool.getConnection();
 				PreparedStatement ps = con.prepareStatement(SQLQuery.SAVE_NEW_USER.get())) {
 			ps.setString(1, user.getLogin());
@@ -70,10 +71,17 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(5, user.getFullName());
 
 			int rows = ps.executeUpdate();
-
-			return (rows > 0 ? true : false);
+			return new RegistrationResult.Builder().isSuccessful(rows > 0 ? true : false).build();
 
 		} catch (InterruptedException | SQLException e) {
+			if (e.getMessage().contains("user_login_key")) {
+				log.info("User with this login already exists : " + e.getMessage());
+				e.printStackTrace();
+				return new RegistrationResult.Builder()
+						.isSuccessful(false)
+						.message("User with this login already exists.")
+						.build();
+			}
 			log.info("Error while saving new user : " + e.getMessage());
 			e.printStackTrace();
 			throw new DAOException("Unable to save new user", e);

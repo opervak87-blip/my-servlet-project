@@ -227,3 +227,109 @@ nav a:hover {
 	color: #555;
 	font-weight: 600;
 }
+
+/* Registration & Login form styles */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+}
+
+.form-box {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 400px;
+    max-width: 95%;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.form-box:hover {
+    transform: translateY(-3px);
+}
+
+.form-box h2 {
+    color: #e31837; /* Brand red */
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.form-box label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-box input {
+    width: 95%;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-box input:focus {
+    border-color: #e31837;
+    outline: none;
+}
+
+.form-box button.login-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    background-color: #e31837;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.form-box button.login-btn:hover {
+    background-color: #c21733;
+}
+
+.form-box .switch-form {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.form-box .switch-form a {
+    color: #e31837;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-box .switch-form a:hover {
+    text-decoration: underline;
+}
+
+/* Alert messages */
+.alert.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    padding: 12px 20px;
+    margin: 20px 40px;
+    border-radius: 6px;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 12px 20px;
+    margin: 20px 40px;
+    border-radius: 6px;
+}

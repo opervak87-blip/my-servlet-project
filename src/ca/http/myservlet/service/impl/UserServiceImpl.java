@@ -23,8 +23,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean saveUser(User user) {
-		return userDAO.saveUser(user);
+	public RegistrationResult saveUser(User user) {
+		RegistrationResult validation = validateDataUser(user);
+		RegistrationResult saveUser;
+		if (validation.isSuccessful()) {
+			saveUser = userDAO.saveUser(user);
+			if (saveUser.isSuccessful()) {
+				saveUser.setPath("/Controller?command=goToLoginPage&message=success");
+				return saveUser;
+			} else {
+				saveUser.setPath("/Controller?command=GoToRegistrationPage&message=error&details=" + saveUser.getMessage());
+				return saveUser;
+			}
+		} else {
+			validation.setPath(
+					"/Controller?command=GoToRegistrationPage&message=error&details=" + validation.getMessage());
+			return validation;
+		}
 	}
 
 	@Override

@@ -3,6 +3,8 @@ package ca.http.myservlet.controller.command.impl;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.controller.command.Command;
 import ca.http.myservlet.service.ServiceProvider;
 import ca.http.myservlet.util.InputUtils;
+import ca.http.myservlet.util.PasswordUtils;
 
 public class SaveNewUser implements Command {
 
@@ -28,21 +31,21 @@ public class SaveNewUser implements Command {
 		String email = request.getParameter(AppConstants.EMAIL.get());
 		String password = request.getParameter(AppConstants.PASSWORD.get());
 		String login = request.getParameter(AppConstants.LOGIN_SMALL_LETTER.get());
+		List <String> roles = new ArrayList<String>();
+		roles.add(AppConstants.ROLE_USER.get());
 
 		User user = new User.Builder().email(InputUtils.trim(email)).fullName(InputUtils.trim(fullName)).isActive(true)
-				.login(InputUtils.trim(login)).password(InputUtils.trim(password)).build();
+				.login(InputUtils.trim(login)).password(InputUtils.trim(PasswordUtils.hashPassword(password))).roles(roles).build();
 		
-		System.out.println(user.toString());
+		RegistrationResult saveUser = provider.getUserService().saveUser(user);
+		
+		System.out.println("SAVE USER : " + saveUser.toString());
 
-		RegistrationResult userRegistrationResult = provider.getUserService().validateDataUser(user);
-
-		if (userRegistrationResult.isSuccessful()) {
-			provider.getUserService().saveUser(user);
-			response.sendRedirect(request.getContextPath() + "/Controller?command=goToLoginPage&message=success");
+		if (saveUser.isSuccessful()) {
+			response.sendRedirect(request.getContextPath() + saveUser.getPath());
 		} else {
 			response.sendRedirect(
-					request.getContextPath() + "/Controller?command=GoToRegistrationPage&message=error&details="
-							+ userRegistrationResult.getMessage());
+					request.getContextPath() + saveUser.getPath());
 		}
 	}
 }

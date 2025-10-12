@@ -12,7 +12,8 @@ public enum AppConstants {
 	EMAIL("email"),
 	PASSWORD("password"),
 	LOGIN("Login"),
-	LOGIN_SMALL_LETTER("login");
+	LOGIN_SMALL_LETTER("login"),
+	ROLE_USER("USER");
 	
 
 	private final String value;

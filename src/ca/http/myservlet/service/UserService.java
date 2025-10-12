@@ -9,7 +9,7 @@ public interface UserService {
 	
 	List<User> getAll();
 	
-	boolean saveUser(User user);
+	RegistrationResult saveUser(User user);
 	
 	RegistrationResult validateDataUser(User user);
 

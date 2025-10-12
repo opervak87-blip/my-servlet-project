@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Register | Riverstone Bank</title>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css">
+      href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body>
 
