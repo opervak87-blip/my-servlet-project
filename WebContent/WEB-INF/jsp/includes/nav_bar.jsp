@@ -10,15 +10,12 @@
 				<c:out value="${n.title}" />
 			</div>
 			<div class="dropdown-content">
-				<c:forEach var="d" items="${n.listAdminDropMenu}">
-					<div>
-						<a
-							href="${pageContext.request.contextPath}/Controller?command=goToDropMenuDetails&id=${d.id}">
-							<c:out value="${d.title}" />
-						</a>
-					</div>
-				</c:forEach>
-			</div>
+                    <c:forEach var="d" items="${n.listAdminDropMenu}">
+                        <a href="${pageContext.request.contextPath}/Controller?command=goToDropMenuDetails&id=${d.id}">
+                            <c:out value="${d.title}" />
+                        </a>
+                    </c:forEach>
+                </div>
 		</div>
 	</c:forEach>
 </div>

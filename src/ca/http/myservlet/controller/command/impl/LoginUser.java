@@ -31,6 +31,8 @@ public class LoginUser implements Command{
 		log.info(loginUser.toString());
 		
 		if (loginUser.isSuccessful()) {
+			response.setContentType("text/html; charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
 			request.getSession().setAttribute("user", loginUser.getData());
 			response.sendRedirect(request.getContextPath() + "/Controller?command=goToIndexPage");
 		} else {
