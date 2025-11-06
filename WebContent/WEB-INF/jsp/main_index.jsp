@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Riverstone Bank</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" type="text/css"  href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body>
 

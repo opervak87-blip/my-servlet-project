@@ -37,7 +37,7 @@ nav a:hover {
 }
 
 /* Header right: icons + login */
-.header-right {
+.header-right  {
 	display: flex;
 	align-items: center;
 	gap: 12px;
@@ -45,11 +45,31 @@ nav a:hover {
 	color: #fff;
 }
 
-.header-right span {
+/* Icons container */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-text {
+    font-size: 16px;
+    color: #fff;
+}
+
+.header-right span  {
 	cursor: pointer;
 }
 
-.login-btn {
+.login-btn, .logout-btn {
 	background-color: #fff;
 	color: #d60000;
 	border: none;
@@ -60,7 +80,7 @@ nav a:hover {
 	font-size: 14px;
 }
 
-.login-btn:hover {
+.login-btn:hover, .logout-btn:hover {
 	background: #f7f7f7;
 }
 

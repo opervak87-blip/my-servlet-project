@@ -13,7 +13,17 @@ public enum AppConstants {
 	PASSWORD("password"),
 	LOGIN("Login"),
 	LOGIN_SMALL_LETTER("login"),
-	ROLE_USER("USER");
+	ROLE_USER("USER"),
+	REGEX_EMAIL("^[A-Za-z0-9+_.-]+@(.+)$"),
+	
+	// ERRORS
+	ERROR_SAVING_NEW_USER("Error while saving new user : "),
+	ERROR_ROLLBACK_SAVING_NEW_USER("Rollback failed while saving new user : "),
+	ERROR_UNABLE_SAVE_USER("Unable to save new user"),
+	USER_LOGIN_KEY("user_login_key"),
+	ERROR_USER_EXIST("User with this login already exists : "),
+	ERROR_USER_DOESNT_EXIST("User with this login doesn't exists"),
+	;
 	
 
 	private final String value;

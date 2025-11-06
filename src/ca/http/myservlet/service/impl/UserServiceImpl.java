@@ -2,14 +2,20 @@ package ca.http.myservlet.service.impl;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
-import ca.http.myservlet.bean.RegistrationResult;
+import ca.http.myservlet.bean.OperationResult;
 import ca.http.myservlet.bean.User;
+import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.dao.UserDAO;
 import ca.http.myservlet.service.UserService;
+import ca.http.myservlet.util.PasswordUtils;
 
 public class UserServiceImpl implements UserService {
+
+	private static final Logger log = Logger.getLogger(UserServiceImpl.class.getName());
 
 	private final UserDAO userDAO;
 
@@ -23,27 +29,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public RegistrationResult saveUser(User user) {
-		RegistrationResult validation = validateDataUser(user);
-		RegistrationResult saveUser;
+	public OperationResult<Void> saveUser(User user) {
+		OperationResult <Void> validation = validateDataUser(user);
 		if (validation.isSuccessful()) {
-			saveUser = userDAO.saveUser(user);
-			if (saveUser.isSuccessful()) {
-				saveUser.setPath("/Controller?command=goToLoginPage&message=success");
-				return saveUser;
-			} else {
-				saveUser.setPath("/Controller?command=GoToRegistrationPage&message=error&details=" + saveUser.getMessage());
-				return saveUser;
-			}
+			return userDAO.saveUser(user);
 		} else {
-			validation.setPath(
-					"/Controller?command=GoToRegistrationPage&message=error&details=" + validation.getMessage());
 			return validation;
 		}
 	}
 
 	@Override
-	public RegistrationResult validateDataUser(User user) {
+	public OperationResult<Void> validateDataUser(User user) {
 
 		StringBuilder message = new StringBuilder();
 
@@ -51,7 +47,7 @@ public class UserServiceImpl implements UserService {
 			message.append("Full name is required.<br>");
 		}
 
-		if (user.getEmail() == null || !user.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+		if (user.getEmail() == null || !user.getEmail().matches(AppConstants.REGEX_EMAIL.get())) {
 			message.append("Please enter a valid email address.<br>");
 		}
 
@@ -63,8 +59,50 @@ public class UserServiceImpl implements UserService {
 			message.append("Password must be at least 6 characters long.<br>");
 		}
 
-		return new RegistrationResult.Builder().isSuccessful(message.length() == 0 ? true : false)
+		return new OperationResult.Builder<Void>().isSuccessful(message.length() == 0 ? true : false)
 				.message(URLEncoder.encode(message.toString(), StandardCharsets.UTF_8)).build();
+	}
+
+	@Override
+	public OperationResult<User> login(String password, String login) {
+		User user = null;
+
+		if (login.matches(AppConstants.REGEX_EMAIL.get())) {
+			try {
+				user = userDAO.loginByEmail(login);
+			} catch (SQLException | InterruptedException e) {
+				log.warning(AppConstants.ERROR_USER_DOESNT_EXIST.get() + e.getMessage());
+				e.printStackTrace();
+				return new OperationResult.Builder<User>().isSuccessful(false).data(user)
+						.message(AppConstants.ERROR_USER_DOESNT_EXIST.get()).build();
+			}
+		} else {
+			try {
+				user = userDAO.loginByLogin(login);
+			} catch (SQLException | InterruptedException e) {
+				log.warning(AppConstants.ERROR_USER_DOESNT_EXIST.get() + e.getMessage());
+				e.printStackTrace();
+				return new OperationResult.Builder<User>().isSuccessful(false)
+						.message(AppConstants.ERROR_USER_DOESNT_EXIST.get()).build();
+			}
+		}
+
+		
+		if (user == null) {
+			log.info("USER IS NULL");
+			log.warning(AppConstants.ERROR_USER_DOESNT_EXIST.get());
+			return new OperationResult.Builder<User>().isSuccessful(false).message(AppConstants.ERROR_USER_DOESNT_EXIST.get())
+					.build();
+		}
+		
+		log.info("USER : " + user.toString());
+		if (PasswordUtils.checkPassword(password, user.getPassword())) {
+			log.info("Password is the same");
+			return new OperationResult.Builder<User>().data(user).isSuccessful(true).build();
+		} else {
+			return new OperationResult.Builder<User>().isSuccessful(false).message(AppConstants.ERROR_USER_DOESNT_EXIST.get())
+					.build();
+		}
 	}
 
 }

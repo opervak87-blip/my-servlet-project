@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Login | Riverstone Bank</title>
 <link rel="stylesheet" type="text/css"
-      href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
+	href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body>
 
@@ -17,11 +17,11 @@
 	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp"%>
 
 	<%
-		String message = request.getParameter("message");
-	if ("success".equals(message)) {
+	String message = request.getParameter("message");
+	String details = request.getParameter("details");
+	if (message != null && !message.isEmpty()) {
 	%>
-	<div class="alert success">Registration successful! Please log
-		in.</div>
+	<div class="alert error"><%=java.net.URLDecoder.decode(details, "UTF-8")%></div>
 	<%
 		}
 	%>
@@ -29,11 +29,12 @@
 	<div class="form-container">
 		<div class="form-box">
 			<h2>Sign In to Riverstone Bank</h2>
-			<form action="<%=request.getContextPath()%>/login" method="post">
-				<label for="username">Username or Email</label> <input type="text"
-					id="username" name="username" required> <label
-					for="password">Password</label> <input type="password"
-					id="password" name="password" required>
+			<form action="${pageContext.request.contextPath}/Controller"
+				method="post">
+				<input type="hidden" name="command" value="loginUser"> <label
+					for="login">Login or Email</label> <input type="text" id="login"
+					name="login" required> <label for="password">Password</label>
+				<input type="password" id="password" name="password" required>
 
 				<button type="submit" class="login-btn">Login</button>
 			</form>

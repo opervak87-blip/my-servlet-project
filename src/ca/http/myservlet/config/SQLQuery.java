@@ -35,7 +35,31 @@ public enum SQLQuery {
 			+ "LEFT JOIN admin_header_nav_bar nb ON dm.admin_header_nav_bar_id = nb.id "
 			+ "WHERE dm.id = ? "
 			+ "ORDER BY dmd.id, dm.id;"),
-	SAVE_NEW_USER("INSERT INTO users (login, password, is_active, email, fullname) VALUES (?, ?, ?, ?, ?);");
+	SAVE_NEW_USER("INSERT INTO users (login, password, is_active, email, fullname) VALUES (?, ?, ?, ?, ?) RETURNING id;"),
+	GET_ROLE_ID_BY_NAME("SELECT id FROM roles WHERE role_name = ?;"),
+	SAVE_USER_ROLES("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?);"),
+	GET_USER_BY_LOGIN("SELECT u.id as u_id, " + 
+			"u.login as u_login, " + 
+			"u.email as u_email, " + 
+			"u.password as u_password, " + 
+			"u.is_active as u_is_active, " + 
+			"r.role_name as r_role_name " + 
+			"FROM users u " + 
+			"LEFT JOIN user_roles ur " + 
+			"ON ur.user_id = u.id " + 
+			"LEFT JOIN roles r " + 
+			"ON ur.role_id = r.id WHERE login = ?;"),
+	GET_USER_BY_EMAIL("SELECT u.id as u_id,  " + 
+			"u.login as u_login,  " + 
+			"u.email as u_email,  " + 
+			"u.password as u_password,  " + 
+			"u.is_active as u_is_active,  " + 
+			"r.role_name as r_role_name  " + 
+			"FROM users u  " + 
+			"LEFT JOIN user_roles ur  " + 
+			"ON ur.user_id = u.id  " + 
+			"LEFT JOIN roles r  " + 
+			"ON ur.role_id = r.id WHERE email = ?;");
 
 	private final String value;
 

@@ -7,6 +7,8 @@ import ca.http.myservlet.controller.command.impl.GoToDropMenuDetails;
 import ca.http.myservlet.controller.command.impl.GoToIndexPage;
 import ca.http.myservlet.controller.command.impl.GoToLoginPage;
 import ca.http.myservlet.controller.command.impl.GoToRegistrationPage;
+import ca.http.myservlet.controller.command.impl.LoginUser;
+import ca.http.myservlet.controller.command.impl.LogoutUser;
 import ca.http.myservlet.controller.command.impl.SaveNewUser;
 
 public class CommandProvider {
@@ -19,6 +21,8 @@ private Map<CommandName, Command> commands = new HashMap<>();
 		commands.put(CommandName.GOTOREGISTRATIONPAGE, new GoToRegistrationPage());
 		commands.put(CommandName.GOTODROPMENUDETAILS, new GoToDropMenuDetails());
 		commands.put(CommandName.SAVENEWUSER, new SaveNewUser());
+		commands.put(CommandName.LOGINUSER, new LoginUser());
+		commands.put(CommandName.LOGOUTUSER, new LogoutUser());
 	}
 	
 	

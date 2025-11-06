@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Register | Riverstone Bank</title>
-<link rel="stylesheet" type="text/css"
-      href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
+<link rel="stylesheet" type="text/css"  href="<%=request.getContextPath()%>/css/style.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body>
 
@@ -17,7 +16,7 @@
 	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp"%>
 
 	<%
-		String message = request.getParameter("message");
+	String message = request.getParameter("message");
 	String errorDetail = request.getParameter("details");
 	if ("error".equals(message)) {
 	%>

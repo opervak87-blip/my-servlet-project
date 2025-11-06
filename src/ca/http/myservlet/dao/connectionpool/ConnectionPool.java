@@ -20,8 +20,13 @@ import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
+import java.util.logging.Logger;
+
+import ca.http.myservlet.dao.impl.UserDAOImpl;
 
 public final class ConnectionPool {
+	
+	private static final Logger log = Logger.getLogger(ConnectionPool.class.getName());
 
 	private final BlockingQueue<PooledConnection> connectionPool;
 	private PQConnection pqCon = PQConnection.getInstance();
@@ -47,6 +52,7 @@ public final class ConnectionPool {
 	}
 
 	public PooledConnection getConnection() throws InterruptedException {
+		log.info("SIZE connectionPool TAKE : " + connectionPool.size());
 		return connectionPool.take();
 	}
 
@@ -77,6 +83,7 @@ public final class ConnectionPool {
 		public void close() {
 			if (!inUse) {
 				inUse = true;
+				log.info("SIZE connectionPool CLOSE : " + pool.connectionPool.size());
 				pool.releaseConnection(this);
 			}
 		}

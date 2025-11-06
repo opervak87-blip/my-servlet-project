@@ -1,17 +1,14 @@
 package ca.http.myservlet.controller.command.impl;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ca.http.myservlet.bean.RegistrationResult;
+import ca.http.myservlet.bean.OperationResult;
 import ca.http.myservlet.bean.User;
 import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.controller.command.Command;
@@ -37,15 +34,13 @@ public class SaveNewUser implements Command {
 		User user = new User.Builder().email(InputUtils.trim(email)).fullName(InputUtils.trim(fullName)).isActive(true)
 				.login(InputUtils.trim(login)).password(InputUtils.trim(PasswordUtils.hashPassword(password))).roles(roles).build();
 		
-		RegistrationResult saveUser = provider.getUserService().saveUser(user);
-		
-		System.out.println("SAVE USER : " + saveUser.toString());
+		OperationResult  saveUser = provider.getUserService().saveUser(user);
 
 		if (saveUser.isSuccessful()) {
-			response.sendRedirect(request.getContextPath() + saveUser.getPath());
+			response.sendRedirect(request.getContextPath() + "/Controller?command=goToLoginPage&message=success");
 		} else {
 			response.sendRedirect(
-					request.getContextPath() + saveUser.getPath());
+					request.getContextPath() + "/Controller?command=GoToRegistrationPage&message=error&details=" + saveUser.getMessage());
 		}
 	}
 }

@@ -10,6 +10,7 @@ public enum SQLColumn {
 	
 	USER_ID("u_id"),
 	USER_LOGIN("u_login"),
+	USER_EMAIL("u_email"),
 	USER_PASSWORD("u_password"),
 	USER_IS_ACTIVE("u_is_active"),
 	USER_ROLES("r_role_name"),
@@ -29,7 +30,10 @@ public enum SQLColumn {
 	ADMIN_DROPMENU_DETAILS_IS_USE("dmd_is_use"),
 	ADMIN_DROPMENU_DETAILS_ADMIN_DROP_MENU_ID("dm_id"),
 	ADMIN_DROPMENU_DETAILS_ADMIN_DROP_MENU_TITLE("dm_title"),
-	ADMIN_DROPMENU_DETAILS_ADMIN_DROP_MENU_IS_USE("dm_is_use");
+	ADMIN_DROPMENU_DETAILS_ADMIN_DROP_MENU_IS_USE("dm_is_use"),
+	
+	USER_ROLES_USER_ID("user_id"),
+	USER_ROLES_ROLE_ID("role_id");
 	
 
 
