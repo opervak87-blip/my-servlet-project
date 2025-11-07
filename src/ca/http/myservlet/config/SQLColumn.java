@@ -1,5 +1,7 @@
 package ca.http.myservlet.config;
 
+
+
 public enum SQLColumn {
 	
 	ID("id"),
@@ -34,6 +36,7 @@ public enum SQLColumn {
 	
 	USER_ROLES_USER_ID("user_id"),
 	USER_ROLES_ROLE_ID("role_id");
+	
 	
 
 
