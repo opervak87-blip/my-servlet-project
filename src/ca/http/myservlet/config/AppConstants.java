@@ -15,6 +15,7 @@ public enum AppConstants {
 	LOGIN_SMALL_LETTER("login"),
 	ROLE_USER("USER"),
 	REGEX_EMAIL("^[A-Za-z0-9+_.-]+@(.+)$"),
+	USER ("user"),
 	
 	// ERRORS
 	ERROR_SAVING_NEW_USER("Error while saving new user : "),

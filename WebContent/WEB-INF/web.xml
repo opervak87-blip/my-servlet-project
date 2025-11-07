@@ -31,5 +31,15 @@
 		<filter-name>ExceptionHandlingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>AuthorityFilter</filter-name>
+		<filter-class>ca.http.myservlet.filter.AuthorityFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>AuthorityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>
