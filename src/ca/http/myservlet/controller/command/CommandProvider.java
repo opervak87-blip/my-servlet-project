@@ -3,6 +3,7 @@ package ca.http.myservlet.controller.command;
 import java.util.HashMap;
 import java.util.Map;
 
+import ca.http.myservlet.controller.command.impl.CitiesByProvince;
 import ca.http.myservlet.controller.command.impl.GoToDropMenuDetails;
 import ca.http.myservlet.controller.command.impl.GoToIndexPage;
 import ca.http.myservlet.controller.command.impl.GoToLoginPage;
@@ -23,6 +24,7 @@ private Map<CommandName, Command> commands = new HashMap<>();
 		commands.put(CommandName.SAVENEWUSER, new SaveNewUser());
 		commands.put(CommandName.LOGINUSER, new LoginUser());
 		commands.put(CommandName.LOGOUTUSER, new LogoutUser());
+		commands.put(CommandName.CITIESBYPROVINCE, new CitiesByProvince());
 	}
 	
 	

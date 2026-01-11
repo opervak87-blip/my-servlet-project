@@ -59,7 +59,9 @@ public enum SQLQuery {
 			"LEFT JOIN user_roles ur  " + 
 			"ON ur.user_id = u.id  " + 
 			"LEFT JOIN roles r  " + 
-			"ON ur.role_id = r.id WHERE email = ?;");
+			"ON ur.role_id = r.id WHERE email = ?;"),
+	GET_CITY_BY_PROVINCE_ID("SELECT * FROM city WHERE province_id = ?;"),
+	GET_ALL_PROVINCE_ID("SELECT * FROM province;");
 
 	private final String value;
 

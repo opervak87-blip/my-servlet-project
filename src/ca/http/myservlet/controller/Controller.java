@@ -1,6 +1,7 @@
 package ca.http.myservlet.controller;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,6 +17,8 @@ import ca.http.myservlet.service.ServiceProvider;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final Logger log = Logger.getLogger(Controller.class.getName());
 
 	private final CommandProvider provider = new CommandProvider();
 
@@ -42,7 +45,7 @@ public class Controller extends HttpServlet {
 		
 		String name;
 		name = request.getParameter("command");
-		System.out.println("Controller : command name : " + name);
+		log.info("COMMAND : " + name);
 		if (name == null) {
 			name = CommandName.GOTOINDEXPAGE.toString();
 		}

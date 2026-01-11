@@ -3,7 +3,9 @@ package ca.http.myservlet.dao;
 import ca.http.myservlet.dao.connectionpool.ConnectionPool;
 import ca.http.myservlet.dao.impl.AdminDropmenuDetailsDAOImpl;
 import ca.http.myservlet.dao.impl.AdminHeaderNavBarDAOImpl;
+import ca.http.myservlet.dao.impl.CityDAOImpl;
 import ca.http.myservlet.dao.impl.NewsDAOImpl;
+import ca.http.myservlet.dao.impl.ProvinceDAOImpl;
 import ca.http.myservlet.dao.impl.UserDAOImpl;
 
 public final class DAOProvider {
@@ -36,6 +38,14 @@ public final class DAOProvider {
 	
 	public AdminDropmenuDetailsDAO getAdminDropmenuDetailsDAO() {
 		return new  AdminDropmenuDetailsDAOImpl(pool);
+	}
+	
+	public ProvinceDAO getProvinceDAO() {
+		return new ProvinceDAOImpl(pool);
+	}
+	
+	public CityDAO getCityDAO() {
+		return new CityDAOImpl(pool);
 	}
 
 }

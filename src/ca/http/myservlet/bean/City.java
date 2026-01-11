@@ -54,7 +54,7 @@ public class City {
 			return this;
 		}
 		
-		public City builder() {
+		public City build() {
 			return new City(this);
 		}
 	}

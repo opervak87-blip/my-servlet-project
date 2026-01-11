@@ -55,7 +55,7 @@ public class Province {
 			return this;
 		}
 		
-		public Province builder() {
+		public Province build() {
 			return new Province(this);
 		}
 	}

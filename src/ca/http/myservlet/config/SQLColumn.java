@@ -35,7 +35,10 @@ public enum SQLColumn {
 	ADMIN_DROPMENU_DETAILS_ADMIN_DROP_MENU_IS_USE("dm_is_use"),
 	
 	USER_ROLES_USER_ID("user_id"),
-	USER_ROLES_ROLE_ID("role_id");
+	USER_ROLES_ROLE_ID("role_id"),
+	
+	PROVINCE_NAME_PROVINCE("name_of_province"),
+	PROVINCE_SHORT_NAME_PROVINCE("short_name_of_province");
 	
 	
 

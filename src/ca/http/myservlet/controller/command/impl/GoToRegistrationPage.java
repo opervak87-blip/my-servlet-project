@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.http.myservlet.bean.Breadcrumb;
+import ca.http.myservlet.bean.Province;
 import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.controller.command.Command;
+import ca.http.myservlet.service.ServiceProvider;
 import ca.http.myservlet.util.BreadcrumbHelper;
 
 public class GoToRegistrationPage implements Command{
@@ -21,6 +23,12 @@ public class GoToRegistrationPage implements Command{
 
 		List<Breadcrumb> trail = BreadcrumbHelper.nextToHome(AppConstants.REGISTRATION.get()).getCrumbs();
 		request.setAttribute(AppConstants.BREADCRUMBS.get(), trail);
+		
+		ServiceProvider provider = (ServiceProvider) context;
+		
+		List<Province> provinceList = provider.getProvinceService().getAll(); 
+		request.setAttribute("provinces", provinceList);
+		
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
 		requestDispatcher.forward(request, response);

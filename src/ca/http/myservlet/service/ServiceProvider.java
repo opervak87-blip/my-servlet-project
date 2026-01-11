@@ -4,7 +4,9 @@ import ca.http.myservlet.dao.DAOProvider;
 import ca.http.myservlet.dao.connectionpool.ConnectionPool;
 import ca.http.myservlet.service.impl.AdminDropmenuDetailsServiceImpl;
 import ca.http.myservlet.service.impl.AdminHeaderNavBarServiceImpl;
+import ca.http.myservlet.service.impl.CityServiceImpl;
 import ca.http.myservlet.service.impl.NewsServiceImpl;
+import ca.http.myservlet.service.impl.ProvinceServiceImpl;
 import ca.http.myservlet.service.impl.UserServiceImpl;
 
 public final class ServiceProvider {
@@ -39,6 +41,12 @@ public final class ServiceProvider {
 		return new AdminDropmenuDetailsServiceImpl(daoProvider.getAdminDropmenuDetailsDAO());
 	}
 	
+	public ProvinceService getProvinceService() {
+		return new ProvinceServiceImpl(daoProvider.getProvinceDAO());
+	}
 	
+	public CityService geCityService() {
+		return new CityServiceImpl(daoProvider.getCityDAO());
+	}
 
 }
