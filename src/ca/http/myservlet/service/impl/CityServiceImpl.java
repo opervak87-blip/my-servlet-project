@@ -23,4 +23,9 @@ public class CityServiceImpl implements CityService {
 		return cityDAO.getAllByProvinceId(id);
 	}
 
+	@Override
+	public List<City> getAll() {
+		return cityDAO.getAll();
+	}
+
 }

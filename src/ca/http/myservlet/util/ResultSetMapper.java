@@ -12,7 +12,7 @@ public class ResultSetMapper {
 	
 	public static int  getInt(ResultSet rs, String columnName) throws SQLException {
 		Integer value = rs.getInt(columnName);
-		return value == null ? value : 0;
+		return value != null ? value : 0;
 	}
 	
 	public static boolean getBoolean(ResultSet rs, String columnName) throws SQLException {

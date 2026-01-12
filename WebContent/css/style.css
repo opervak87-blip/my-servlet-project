@@ -361,7 +361,8 @@ nav a:hover {
     color: #333;
 }
 
-.form-box input {
+.form-box input,
+.form-box select {
     width: 95%;
     padding: 10px 10px;
     margin-bottom: 20px;
@@ -369,9 +370,11 @@ nav a:hover {
     border-radius: 6px;
     font-size: 14px;
     transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
-.form-box input:focus {
+.form-box input:focus, 
+.form-box select:focus {
     border-color: #e31837;
     outline: none;
 }

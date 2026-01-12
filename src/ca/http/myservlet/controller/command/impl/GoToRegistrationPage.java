@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.http.myservlet.bean.Breadcrumb;
+import ca.http.myservlet.bean.City;
 import ca.http.myservlet.bean.Province;
 import ca.http.myservlet.config.AppConstants;
 import ca.http.myservlet.controller.command.Command;
@@ -27,7 +28,10 @@ public class GoToRegistrationPage implements Command{
 		ServiceProvider provider = (ServiceProvider) context;
 		
 		List<Province> provinceList = provider.getProvinceService().getAll(); 
+		List<City> cityList = provider.geCityService().getAll();
+		
 		request.setAttribute("provinces", provinceList);
+		request.setAttribute("cities", cityList);
 		
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp");

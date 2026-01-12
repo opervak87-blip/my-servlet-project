@@ -37,6 +37,9 @@ public enum SQLColumn {
 	USER_ROLES_USER_ID("user_id"),
 	USER_ROLES_ROLE_ID("role_id"),
 	
+	CITY_NAME("name_of_city"),
+	CITY_PROVINCE_ID("province_id"),
+	
 	PROVINCE_NAME_PROVINCE("name_of_province"),
 	PROVINCE_SHORT_NAME_PROVINCE("short_name_of_province");
 	

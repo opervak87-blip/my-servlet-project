@@ -7,5 +7,6 @@ import ca.http.myservlet.bean.City;
 public interface CityDAO {
 	
 	List<City> getAllByProvinceId(int provinceId);
+	List<City> getAll();
 
 }
