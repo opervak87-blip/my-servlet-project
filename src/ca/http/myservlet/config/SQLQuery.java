@@ -36,6 +36,10 @@ public enum SQLQuery {
 			+ "WHERE dm.id = ? "
 			+ "ORDER BY dmd.id, dm.id;"),
 	SAVE_NEW_USER("INSERT INTO users (login, password, is_active, email, fullname) VALUES (?, ?, ?, ?, ?) RETURNING id;"),
+	SAVE_NEW_USER_DETAIL("INSERT INTO user_detail (user_id, address_id, last_name, first_name, middle_name, phone) "
+			+ "VALUES (?, ?, ?, ?, ?, ?);"),
+	SAVE_NEW_ADDRESS("INSERT INTO address (city_id, street_number, street_name, postal_code, apartment_number) "
+			+ "VALUES (?, ?, ?, ?, ?) RETURNING id;"),
 	GET_ROLE_ID_BY_NAME("SELECT id FROM roles WHERE role_name = ?;"),
 	SAVE_USER_ROLES("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?);"),
 	GET_USER_BY_LOGIN("SELECT u.id as u_id, " + 

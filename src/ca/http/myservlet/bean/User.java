@@ -10,6 +10,7 @@ public class User {
 	private String login;
 	private String password;
 	private boolean isActive;
+	private UserDetail userDetail;
 	private List<String> roles;
 
 	User(Builder builder) {
@@ -20,6 +21,7 @@ public class User {
 		this.password = builder.password;
 		this.isActive = builder.isActive;
 		this.roles = builder.roles;
+		this.userDetail = builder.userDetail;
 	}
 
 	public int getId() {
@@ -42,6 +44,10 @@ public class User {
 		return password;
 	}
 	
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+	
 	public boolean getIsActive() {
 		return isActive;
 	}
@@ -60,6 +66,7 @@ public class User {
 	            ", password='" + (password != null ? "****" : null) + '\'' +
 	            ", isActive=" + isActive +
 	            ", roles=" + (roles != null ? roles : "[]") +
+	            ", userDetail=" + (userDetail != null ? userDetail.toString() : "[]") +
 	            '}';
 	}
 
@@ -69,6 +76,7 @@ public class User {
 		private String email;
 		private String login;
 		private String password;
+		private UserDetail userDetail;
 		private boolean isActive;
 		private List<String> roles;
 
@@ -94,6 +102,11 @@ public class User {
 
 		public Builder password(String password) {
 			this.password = password;
+			return this;
+		}
+		
+		public Builder userDetail(UserDetail userDetail) {
+			this.userDetail = userDetail;
 			return this;
 		}
 		

@@ -70,8 +70,14 @@
 			<h2>Create Your Account</h2>
 			<form action="<%=request.getContextPath()%>/Controller?command=saveNewUser" method="post">
 				
-				<label for="fullname">Full Name</label> 
-				<input type="text" id="fullname" name="fullname" required> 
+				<label for="firstName">First Name</label> 
+				<input type="text" id="firstName" name="firstName" required> 
+				
+				<label for="middleName">Middle Name</label> 
+				<input type="text" id="middleName" name="middleName"> 
+				
+				<label for="lastName">Last Name</label> 
+				<input type="text" id="lastName" name="lastName" required> 
 				
 				<label for="email">Email</label>
 				<input type="email" id="email" name="email" required> 
@@ -119,6 +125,9 @@
 
 				<label for="postalCode">Postal Code</label> 
 				<input type="text" id="postalCode" name="postalCode" required>
+				
+				<label for="phone">phone</label> 
+				<input type="text" id="phone" name="phone" required>
 
 				<button type="submit" class="login-btn">Register</button>
 			</form>

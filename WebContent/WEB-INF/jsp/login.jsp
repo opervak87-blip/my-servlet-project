@@ -17,14 +17,23 @@
 	<%@ include file="/WEB-INF/jsp/includes/nav_bar.jsp"%>
 
 	<%
-	String message = request.getParameter("message");
-	String details = request.getParameter("details");
-	if (message != null && !message.isEmpty()) {
+		String message = request.getParameter("message");
+
+	if ("success".equals(message)) {
 	%>
-	<div class="alert error"><%=java.net.URLDecoder.decode(details, "UTF-8")%></div>
+	<div class="alert success">Registration successful. Please log
+		in.</div>
+	<%
+		} else if ("error".equals(message)) {
+		String details = request.getParameter("details");
+	%>
+	<div class="alert error">
+		<%=details != null ? java.net.URLDecoder.decode(details, "UTF-8") : "Login failed. Please try again."%>
+	</div>
 	<%
 		}
 	%>
+
 
 	<div class="form-container">
 		<div class="form-box">
